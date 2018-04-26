@@ -5,6 +5,8 @@
  */
 package backpropagation;
 
+import java.util.function.DoubleFunction;
+
 /**
  *
  * @author Douglas
@@ -38,13 +40,13 @@ public class Backpropagation {
         this.alpha = alpha;
     }
 
-    public void iteracao(double[][] v, double[][] w, double[][] v0, int num) {
+    public void iteracao(DoubleFunction f, double[][] v, double[][] w, double[][] v0, int num) {
         this.v = v;
         this.w = w;
         this.v0 = v0;
 
         for (int x = 0; x < 300; x++) {
-            t[x] = Math.sin(2 * x * Math.PI / 180) * Math.sin(x * Math.PI / 180);
+            t[x] = (double) f.apply(x);
         }
 
         for (int n = 0; n < num; n++) { //treinamentos

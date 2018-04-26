@@ -7,6 +7,7 @@ package backpropagation;
 
 import java.awt.Color;
 import java.util.Locale;
+import java.util.function.DoubleFunction;
 import javax.swing.JFrame;
 
 /**
@@ -34,7 +35,9 @@ public class Principal extends JFrame {
 
         Backpropagation backp = new Backpropagation(w0, alpha);
 
-        backp.iteracao(v, w, v0, 109000);
+        DoubleFunction f = (x) -> Math.sin(2 * x * Math.PI / 180) * Math.sin(x * Math.PI / 180);
+
+        backp.iteracao(f, v, w, v0, 109000);
         pesos = backp.testeBackpropagation(backp.getV0(), backp.getV(), backp.getW0(), backp.getW());
 
         JFrame aplicacao = new JFrame();
