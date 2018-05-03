@@ -33,9 +33,9 @@ public class Principal extends JFrame {
         Adaline ad = new Adaline(w, taxaAprendizado);
 
         //Padrão treinado
-        DoubleFunction f1 = (i) -> Math.sin(i * Math.PI / 180);
-        DoubleFunction f2 = (i) -> Math.cos(i * Math.PI / 180);
-        DoubleFunction f3 = (i) -> i * Math.PI / 180;
+        DoubleFunction f1 = (x) -> Math.sin(x * Math.PI / 180);
+        DoubleFunction f2 = (x) -> Math.cos(x * Math.PI / 180);
+        DoubleFunction f3 = (x) -> x * Math.PI / 180;
 
         //Valores para comparação
         DoubleFunction f4 = (i) -> (Math.sin(i * Math.PI / 180)) * 0.8;
