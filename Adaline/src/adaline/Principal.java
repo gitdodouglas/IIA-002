@@ -32,11 +32,17 @@ public class Principal extends JFrame {
 
         Adaline ad = new Adaline(w, taxaAprendizado);
 
-        DoubleFunction f1 = (x) -> Math.sin(x * Math.PI / 180);
-        DoubleFunction f2 = (x) -> Math.cos(x * Math.PI / 180);
-        DoubleFunction f3 = (x) -> x * Math.PI / 180;
+        //Padrão treinado
+        DoubleFunction f1 = (i) -> Math.sin(i * Math.PI / 180);
+        DoubleFunction f2 = (i) -> Math.cos(i * Math.PI / 180);
+        DoubleFunction f3 = (i) -> i * Math.PI / 180;
 
-        ad.interacao(f1, f2, f3, 32);
+        //Valores para comparação
+        DoubleFunction f4 = (i) -> (Math.sin(i * Math.PI / 180)) * 0.8;
+        DoubleFunction f5 = (i) -> (Math.cos(i * Math.PI / 180)) * 0.9;
+        DoubleFunction f6 = (i) -> (i * Math.PI / 180) * 1.1;
+
+        ad.interacao(f1, f2, f3, f4, f5, f6, 32);
         pesos = ad.verificaAdaline(ad.getW());
 
         JFrame aplicacao = new JFrame();
@@ -44,7 +50,7 @@ public class Principal extends JFrame {
         aplicacao.setTitle("Redes Neurais Artificiais");
         aplicacao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         aplicacao.add(g);
-        aplicacao.setSize(500, 480);
+        aplicacao.setSize(400, 420);
         aplicacao.setLocationRelativeTo(null);
         aplicacao.setVisible(true);
 

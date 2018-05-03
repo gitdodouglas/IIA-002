@@ -13,23 +13,29 @@ import java.util.function.DoubleFunction;
  */
 public class Adaline {
 
-    private double f1[], f2[], f3[], f[], t[], w[][], taxaAprendizado;
+    private double f1[], f2[], f3[], f4[], f5[], f6[], f[], t[], w[][], taxaAprendizado;
 
     public Adaline(double[][] w, double taxaAprendizado) {
         f1 = new double[300];
         f2 = new double[300];
         f3 = new double[300];
+        f4 = new double[300];
+        f5 = new double[300];
+        f6 = new double[300];
         f = new double[300];
         t = new double[300];
         this.w = w;
         this.taxaAprendizado = taxaAprendizado;
     }
 
-    public void interacao(DoubleFunction f1, DoubleFunction f2, DoubleFunction f3, int n) {
+    public void interacao(DoubleFunction f1, DoubleFunction f2, DoubleFunction f3, DoubleFunction f4, DoubleFunction f5, DoubleFunction f6, int n) {
         for (int x = 0; x < 300; x++) {
             this.f1[x] = (double) f1.apply(x);
             this.f2[x] = (double) f2.apply(x);
             this.f3[x] = (double) f3.apply(x);
+            this.f4[x] = (double) f4.apply(x);
+            this.f5[x] = (double) f5.apply(x);
+            this.f6[x] = (double) f6.apply(x);
             this.f[x] = -Math.PI + 0.565 * this.f1[x] + 2.657 * this.f2[x] + 0.674 * this.f3[x];
         }
 
@@ -70,7 +76,7 @@ public class Adaline {
         System.out.println(String.format("Pesos w = \t %.20f", ww[3][0]));
 
         for (int i = 0; i < 300; i++) {
-            ff[i] = ww[0][0] + ww[1][0] * f1[i] + ww[2][0] * f2[i] + ww[3][0] * f3[i];
+            ff[i] = ww[0][0] + ww[1][0] * f4[i] + ww[2][0] * f5[i] + ww[3][0] * f6[i];
         }
 
         int k = 0;
